@@ -28,7 +28,7 @@ function repairTextInput() {
     const saveMessage = localStorage.getItem(LOCALSTORAGE_KEY);
     const parseMessage = JSON.parse(saveMessage);
 
-    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))) {
+    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))?.message) {
         formEl.message.value = parseMessage.message;
     };
 
