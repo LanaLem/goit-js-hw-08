@@ -16,18 +16,23 @@ function onFormInput(e) {
 formEl.addEventListener("submit", onFormSubmit);
 function onFormSubmit(e) { 
     e.preventDefault();
-    console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
 
-    e.currentTarget.reset();
-    localStorage.removeItem(LOCALSTORAGE_KEY);
+    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))?.email && JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))?.message) {
+        console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
+        localStorage.removeItem(LOCALSTORAGE_KEY);
+        e.currentTarget.reset();  
+    } else { alert('заполните все поля'); };
 }
 
 function repairTextInput() { 
     const saveMessage = localStorage.getItem(LOCALSTORAGE_KEY);
     const parseMessage = JSON.parse(saveMessage);
 
-    if (saveMessage) { 
-        formEl.email.value = parseMessage.email;
+    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))) {
         formEl.message.value = parseMessage.message;
+    };
+
+    if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))?.email) {
+         formEl.email.value = parseMessage.email;
     };
 }
