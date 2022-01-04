@@ -30,9 +30,11 @@ function repairTextInput() {
 
     if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))?.message) {
         formEl.message.value = parseMessage.message;
+        formData.message = formEl.message.value
     };
 
     if (JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY))?.email) {
-         formEl.email.value = parseMessage.email;
+        formEl.email.value = parseMessage.email;
+        formData.email = formEl.email.value
     };
 }
